@@ -1,0 +1,409 @@
+// ==========================================================================
+// Eixo Pilates — Componentes Globais
+// ==========================================================================
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// Ícones
+.icon {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+
+  img {
+    flex: none;
+    max-width: none;
+  }
+
+  &-calendar {
+    width: calc(26 * var(--u));
+    height: calc(26 * var(--u));
+
+    img {
+      transform: scale(calc(var(--icon-scale, 1)));
+    }
+  }
+
+  &-pilates {
+    width: calc(20 * var(--u));
+    height: calc(20 * var(--u));
+  }
+
+  &-plus {
+    width: calc(16 * var(--u));
+    height: calc(16 * var(--u));
+  }
+
+  &-play-small {
+    width: calc(26 * var(--u));
+    height: calc(26 * var(--u));
+  }
+
+  &-play-large {
+    width: calc(40 * var(--u));
+    height: calc(40 * var(--u));
+  }
+}
+
+// Eyebrow e Títulos Globais
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: calc(12 * var(--u));
+  font-size: calc(16 * var(--u));
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  @include font-var(16);
+}
+
+.section-heading {
+  text-align: center;
+
+  .eyebrow {
+    justify-content: center;
+  }
+
+  h2 {
+    margin: calc(32 * var(--u)) auto 0;
+  }
+
+  .section-description {
+    margin: calc(16 * var(--u)) auto 0;
+  }
+}
+
+h2 {
+  font-size: calc(64 * var(--u));
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  @include font-var(64);
+}
+
+.section-description {
+  font-size: calc(21 * var(--u));
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+// Botões
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(16 * var(--u));
+  padding: calc(20 * var(--u)) calc(32 * var(--u));
+  min-height: calc(66 * var(--u));
+  border-radius: calc(80 * var(--u));
+  font-size: calc(21 * var(--u));
+  font-weight: 500;
+  line-height: normal;
+  white-space: nowrap;
+  transition: filter 0.18s, transform 0.18s, box-shadow 0.25s ease;
+
+  &:hover {
+    filter: brightness(1.06);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &-orange {
+    background: var(--orange);
+    color: var(--white);
+  }
+
+  &-blue {
+    background: var(--blue);
+    color: var(--white);
+  }
+
+  &-white {
+    background: var(--white);
+    color: var(--black);
+  }
+}
+
+// Grupo de Avatares
+.avatars {
+  display: flex;
+  align-items: center;
+  flex: none;
+  width: calc(228 * var(--u));
+  height: calc(68 * var(--u));
+
+  img {
+    width: calc(68 * var(--u));
+    height: calc(68 * var(--u));
+    border-radius: 50%;
+    flex: none;
+  }
+
+  img + img {
+    margin-left: calc(-28 * var(--u));
+  }
+}
+
+// Emblema Numérico
+.number-badge {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: calc(56 * var(--u));
+  height: calc(56 * var(--u));
+  color: var(--black);
+  font-size: calc(24 * var(--u));
+  font-weight: 500;
+  line-height: normal;
+  isolation: isolate;
+  @include font-var(24);
+
+  > img {
+    position: absolute;
+    z-index: -1;
+    transform: scale(var(--asset-scale, 1));
+  }
+
+  > span {
+    position: relative;
+  }
+}
+
+// Controles de Play
+.play-control {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(250, 250, 250, 0.4);
+  border-radius: calc(60 * var(--u));
+  color: var(--white);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  transition: background 0.2s, transform 0.25s ease;
+}
+
+.play-label {
+  background: rgba(10, 10, 10, 0.2);
+  padding: calc(16 * var(--u)) calc(32 * var(--u));
+  gap: calc(12 * var(--u));
+  font-weight: 500;
+  font-size: calc(21 * var(--u));
+  line-height: normal;
+  white-space: nowrap;
+  bottom: calc(32 * var(--u));
+}
+
+.play-circle {
+  background: rgba(10, 10, 10, 0.3);
+  width: calc(72 * var(--u));
+  height: calc(72 * var(--u));
+}
+
+// Modais / Diálogos
+dialog {
+  border: 0;
+  padding: 0;
+  color: var(--black);
+  background: var(--white);
+  border-radius: 24px;
+  box-shadow: 0 24px 100px #0005;
+  max-height: 90dvh;
+  overscroll-behavior: contain;
+
+  &::backdrop {
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
+.dialog-close {
+  position: absolute;
+  z-index: 3;
+  right: 16px;
+  top: 14px;
+  width: 34px;
+  height: 34px;
+  background: rgba(10, 10, 10, 0.1);
+  border-radius: 50%;
+  font-size: 26px;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  transition: transform 0.2s ease, background 0.2s ease;
+
+  &:hover {
+    background: rgba(10, 10, 10, 0.2);
+    transform: scale(1.05);
+  }
+}
+
+.modal-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  margin-bottom: 18px;
+  color: #777;
+}
+
+.modal-description {
+  font-size: 15px;
+  color: #777;
+  line-height: 1.5;
+  margin-top: 14px;
+}
+
+// Modal de Agendamento
+.booking-dialog {
+  width: min(540px, calc(100% - 32px));
+  padding: 40px;
+
+  h2 {
+    font-size: 38px;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    max-width: 400px;
+  }
+}
+
+#booking-form {
+  display: grid;
+  gap: 16px;
+  margin-top: 28px;
+
+  label {
+    display: grid;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  input,
+  select {
+    width: 100%;
+    min-width: 0;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #fff;
+    padding: 12px;
+    font-size: 15px;
+    color: var(--black);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    &:focus {
+      outline: none;
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(0, 157, 255, 0.15);
+    }
+  }
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.modal-submit {
+  border-radius: 40px;
+  min-height: 48px;
+  background: var(--orange);
+  color: var(--black);
+  padding: 13px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: filter 0.18s, transform 0.18s;
+
+  &:hover {
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.demo-note {
+  font-size: 11px;
+  line-height: 1.6;
+  color: #888;
+}
+
+.success-text {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 24px 0;
+}
+
+.booking-success {
+  .modal-submit {
+    margin-top: 24px;
+    width: 100%;
+  }
+}
+
+// Modal de Depoimento
+.testimonial-dialog {
+  width: min(800px, calc(100% - 32px));
+  background: var(--black);
+  color: var(--white);
+
+  .dialog-close {
+    background: #fafafae6;
+    color: var(--black);
+
+    &:hover {
+      background: #fafafa;
+    }
+  }
+
+  &-media {
+    background: #161616;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    min-height: 200px;
+
+    img,
+    video {
+      width: 100%;
+      max-height: 68dvh;
+      object-fit: contain;
+    }
+  }
+
+  &-caption {
+    padding: 24px 32px;
+
+    h2 {
+      font-size: 24px;
+    }
+
+    p {
+      font-size: 12px;
+      color: var(--light-muted);
+      margin-top: 10px;
+    }
+  }
+}
+
+.testimonial-placeholder {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  text-align: center;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: rgba(10, 10, 10, 0.8);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--white);
+}

@@ -1,0 +1,165 @@
+// ==========================================================================
+// Eixo Pilates — Efeitos Visuais, GSAP e Transições Interativas
+// ==========================================================================
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ==========================================================================
+// Tela de Carregamento (Loader)
+// ==========================================================================
+
+@keyframes loader-fade-out {
+  to {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: $color-orange;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  // Quando JS adiciona .is-done, dispara a saída
+  &.is-done {
+    animation: loader-fade-out 0.7s cubic-bezier(0.76, 0, 0.24, 1) 0.2s forwards;
+  }
+
+  // Depois de sumir, remove do fluxo de leitura
+  &.is-hidden {
+    display: none;
+  }
+}
+
+.loader-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(28 * var(--u));
+  width: calc(420 * var(--u));
+
+  @media (max-width: 699px) {
+    width: calc(100% - 64px);
+    gap: 20px;
+  }
+}
+
+.loader-label {
+  margin: 0;
+  font-family: "Eixo Sans", sans-serif;
+  font-size: calc(72 * var(--u));
+  font-weight: 100;                     // ultra-thin
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 1;
+  font-variation-settings: "ROND" 100, "wdth" 100, "slnt" 0, "opsz" 72;
+  user-select: none;
+
+  @media (max-width: 699px) {
+    font-size: 44px;
+    letter-spacing: 0.18em;
+  }
+}
+
+.loader-bar-track {
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.loader-bar {
+  height: 100%;
+  width: 0%;
+  background: #fff;
+  border-radius: 999px;
+  transition: width 0.08s linear;
+}
+
+.loader-percent {
+  font-family: "Eixo Sans", sans-serif;
+  font-size: calc(14 * var(--u));
+  font-weight: 300;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.72);
+  user-select: none;
+  font-variation-settings: "ROND" 0, "wdth" 100, "slnt" 0, "opsz" 14;
+
+  @media (max-width: 699px) {
+    font-size: 12px;
+  }
+}
+
+// Header ao rolar a página
+.header.is-scrolled {
+  position: fixed;
+  z-index: 1000;
+  background: rgba(10, 10, 10, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(250, 250, 250, 0.08);
+}
+
+// Microinterações nos Cards de Espaço
+.space-card {
+  .number-badge {
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  &:hover .number-badge {
+    transform: scale(1.1) rotate(6deg);
+  }
+}
+
+// Microinterações nos Cards de Aulas
+.class-card {
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+  }
+}
+
+// Animação suave para resposta da FAQ
+.faq-answer {
+  overflow: hidden;
+}
+
+// Transições suaves para modais
+dialog {
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 0.25s ease, transform 0.25s ease, overlay 0.25s ease allow-discrete, display 0.25s ease allow-discrete;
+
+  &[open] {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  &::backdrop {
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  &[open]::backdrop {
+    opacity: 1;
+  }
+}
+
+@starting-style {
+  dialog[open] {
+    opacity: 0;
+    transform: scale(0.96);
+
+    &::backdrop {
+      opacity: 0;
+    }
+  }
+}

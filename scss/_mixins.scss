@@ -1,0 +1,49 @@
+// ==========================================================================
+// Eixo Pilates — Mixins e Utilitários
+// ==========================================================================
+@use 'variables' as *;
+
+// Font Variation Mixin
+@mixin font-var($opsz: 21, $weight: null, $round: 0, $width: 100, $slant: 0) {
+  @if $weight != null {
+    font-weight: $weight;
+  }
+  font-variation-settings: 'ROND' $round, 'wdth' $width, 'slnt' $slant, 'opsz' $opsz;
+}
+
+// Media Query Mixins
+@mixin desktop-wide {
+  @media (min-width: #{$bp-desktop-wide}) {
+    @content;
+  }
+}
+
+@mixin desktop-standard {
+  @media (min-width: #{$bp-desktop-min}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$bp-tablet}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: #{$bp-mobile}) {
+    @content;
+  }
+}
+
+@mixin small-mobile {
+  @media (max-width: #{$bp-small-mobile}) {
+    @content;
+  }
+}
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}

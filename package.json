@@ -1,0 +1,13 @@
+{
+  "name": "eixo-pilates",
+  "version": "1.0.0",
+  "description": "Eixo Pilates Studio — Landing page com HTML5, SCSS, JS moderno e animações GSAP.",
+  "scripts": {
+    "build:css": "sass scss/styles.scss css/styles.css --style=expanded --no-source-map",
+    "build:css:min": "sass scss/styles.scss css/styles.css --style=compressed --no-source-map",
+    "watch:css": "sass --watch scss/styles.scss:css/styles.css"
+  },
+  "devDependencies": {
+    "sass": "^1.108.2"
+  }
+}

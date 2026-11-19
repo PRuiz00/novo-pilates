@@ -1,0 +1,119 @@
+// ==========================================================================
+// Eixo Pilates — Base, Tipografia e Reset
+// ==========================================================================
+@use 'variables' as *;
+@use 'mixins' as *;
+
+@font-face {
+  font-family: 'Eixo Sans';
+  src: url('../assets/fontes/google-sans-flex-web.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 1 1000;
+  font-display: swap;
+}
+
+:root {
+  --u: min(1px, 0.052083333333vw);
+  --white: #{$color-white};
+  --black: #{$color-black};
+  --orange: #{$color-orange};
+  --blue: #{$color-blue};
+  --muted: #{$color-muted};
+  --light-muted: #{$color-light-muted};
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--black);
+  font-family: 'Eixo Sans', sans-serif;
+  font-weight: 400;
+  font-optical-sizing: none;
+  -webkit-font-smoothing: antialiased;
+  @include font-var(21);
+}
+
+p,
+h1,
+h2,
+h3,
+figure {
+  margin: 0;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+}
+
+button:focus-visible,
+a:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 6px;
+}
+
+section,
+footer {
+  scroll-margin-top: calc(88 * var(--u));
+}
+
+.container {
+  width: calc(1200 * var(--u));
+  margin-inline: auto;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 20;
+  top: 12px;
+  left: 12px;
+  padding: 12px 20px;
+  border-radius: 20px;
+  background: white;
+  color: black;
+  transform: translateY(-200%);
+
+  &:focus {
+    transform: translateY(0);
+  }
+}
+
+[hidden] {
+  display: none !important;
+}

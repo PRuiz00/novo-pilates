@@ -1,0 +1,24 @@
+// ==========================================================================
+// Eixo Pilates — Variáveis Globais de Design
+// ==========================================================================
+
+// Cores Principais
+$color-white: #fafafa;
+$color-black: #0a0a0a;
+$color-orange: #ff9030;
+$color-blue: #009dff;
+$color-muted: rgba(10, 10, 10, 0.6);
+$color-light-muted: rgba(250, 250, 250, 0.6);
+$color-gold: #ffd563;
+$color-hero-bg: #24231e;
+$color-testimonial-bg: #d2d0cb;
+
+// Fontes
+$font-primary: 'Eixo Sans', 'Google Sans Flex', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+// Breakpoints
+$bp-desktop-wide: 1920px;
+$bp-desktop-min: 1100px;
+$bp-tablet: 1099px;
+$bp-mobile: 699px;
+$bp-small-mobile: 374px;
